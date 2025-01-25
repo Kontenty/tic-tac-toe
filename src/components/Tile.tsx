@@ -1,9 +1,9 @@
 import { tile } from "./tile.css";
 
-type Props = {
+interface Props {
   clickedBy: null | number;
   onClick: () => void;
-};
+}
 
 const XMarkIcon = () => (
   <svg
