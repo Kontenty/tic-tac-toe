@@ -18,5 +18,8 @@ const base = style({
 
 export const tile = styleVariants({
   default: [base, { boxShadow: "none" }],
-  active: [base, { boxShadow: shadowStyle }],
+  active: [
+    base,
+    { boxShadow: shadowStyle, cursor: "unset", pointerEvents: "none" },
+  ],
 });

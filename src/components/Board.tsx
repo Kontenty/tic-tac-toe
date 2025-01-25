@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Tile from "./Tile";
+import { board, resetBtn } from "./board.css";
 
 interface TileI {
   clickedBy: null | number;
@@ -31,7 +32,7 @@ const Board = () => {
 
   return (
     <>
-      <div className="board">
+      <div className={board}>
         {tiles.map((tile) => (
           <Tile
             key={tile.id}
@@ -40,7 +41,7 @@ const Board = () => {
           />
         ))}
       </div>
-      <button className="resetBtn" onClick={handleReset}>
+      <button className={resetBtn} onClick={handleReset}>
         Reset
       </button>
     </>
