@@ -6,13 +6,14 @@ interface TileI {
   id: number;
 }
 
-const initial: TileI[] = [...Array(10).keys()].map((key) => ({
-  clickedBy: null,
-  id: key,
-}));
+const initialTiles = (): TileI[] =>
+  [...Array(9).keys()].map((key) => ({
+    clickedBy: null,
+    id: key,
+  }));
 
 const Board = () => {
-  const [tiles, setTiles] = useState(initial);
+  const [tiles, setTiles] = useState(() => initialTiles());
   const [activePlayer, setActivePlayer] = useState(1);
 
   const handleClick = (i: number) => {
@@ -23,17 +24,26 @@ const Board = () => {
     setActivePlayer((state) => (state % 2) + 1);
   };
 
+  const handleReset = () => {
+    setActivePlayer(1);
+    setTiles(initialTiles());
+  };
+
   return (
-    <div className="board">
-      {tiles.map((tile) => (
-        <Tile
-          key={tile.id}
-          clickedBy={tile.clickedBy}
-          id={tile.id}
-          onClick={handleClick}
-        />
-      ))}
-    </div>
+    <>
+      <div className="board">
+        {tiles.map((tile) => (
+          <Tile
+            key={tile.id}
+            clickedBy={tile.clickedBy}
+            onClick={() => handleClick(tile.id)}
+          />
+        ))}
+      </div>
+      <button className="resetBtn" onClick={handleReset}>
+        Reset
+      </button>
+    </>
   );
 };
 

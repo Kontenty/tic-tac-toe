@@ -1,7 +1,6 @@
 type Props = {
   clickedBy: null | number;
-  id: number;
-  onClick: (i: number) => void;
+  onClick: () => void;
 };
 
 const XMarkIcon = () => (
@@ -38,7 +37,7 @@ const CircleIcon = () => (
   </svg>
 );
 
-const Tile = ({ clickedBy, id, onClick }: Props) => {
+const Tile = ({ clickedBy, onClick }: Props) => {
   const getIcon = () => {
     if (!clickedBy) {
       return null;
@@ -47,10 +46,7 @@ const Tile = ({ clickedBy, id, onClick }: Props) => {
   };
 
   return (
-    <button
-      className={`tile${clickedBy ? " active" : ""}`}
-      onClick={() => onClick(id)}
-    >
+    <button className={`tile${clickedBy ? " active" : ""}`} onClick={onClick}>
       {getIcon()}
     </button>
   );
