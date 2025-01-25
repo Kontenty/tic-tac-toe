@@ -12,24 +12,6 @@
   margin: 1rem;
 }
 
-.tile {
-  background-color: #fcfcfc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: none;
-  transition: all 0.3s ease-in-out;
-}
-.tile:hover {
-  box-shadow: rgb(204, 219, 232) 3px 3px 8px -1px inset,
-    rgba(255, 255, 255, 0.5) -3px -3px 8px -1px inset;
-}
-.tile.active {
-  box-shadow: rgb(204, 219, 232) 3px 3px 8px -1px inset,
-    rgba(255, 255, 255, 0.5) -3px -3px 8px -1px inset;
-}
-
 .resetBtn {
   padding: 0.5rem 1rem;
   border-radius: 1rem;

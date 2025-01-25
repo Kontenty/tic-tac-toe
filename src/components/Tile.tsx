@@ -1,3 +1,5 @@
+import { tile } from "./tile.css";
+
 type Props = {
   clickedBy: null | number;
   onClick: () => void;
@@ -46,7 +48,10 @@ const Tile = ({ clickedBy, onClick }: Props) => {
   };
 
   return (
-    <button className={`tile${clickedBy ? " active" : ""}`} onClick={onClick}>
+    <button
+      className={clickedBy ? tile.active : tile.default}
+      onClick={onClick}
+    >
       {getIcon()}
     </button>
   );
