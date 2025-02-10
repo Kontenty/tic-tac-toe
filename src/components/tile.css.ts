@@ -23,3 +23,7 @@ export const tile = styleVariants({
     { boxShadow: shadowStyle, cursor: "unset", pointerEvents: "none" },
   ],
 });
+
+export const svg = style({
+  width: "80%",
+});

@@ -1,4 +1,4 @@
-import { tile } from "./tile.css";
+import { tile, svg } from "./tile.css";
 
 interface Props {
   clickedBy: null | number;
@@ -12,7 +12,7 @@ const XMarkIcon = () => (
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
-    className="size-6"
+    className={svg}
   >
     <path
       strokeLinecap="round"
@@ -29,7 +29,7 @@ const CircleIcon = () => (
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
-    className="size-6"
+    className={svg}
   >
     <path
       strokeLinecap="round"
