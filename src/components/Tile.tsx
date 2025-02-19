@@ -1,18 +1,20 @@
+import { createElement } from "react";
 import { tile, svg } from "./tile.css";
 
 interface Props {
   clickedBy: null | string;
+  color?: string;
   onClick: () => void;
 }
 
-const XMarkIcon = () => (
+const XMarkIcon = ({ color }: Pick<Props, "color">) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
-    className={svg}
+    className={color ? svg.red : svg.default}
   >
     <path
       strokeLinecap="round"
@@ -22,14 +24,14 @@ const XMarkIcon = () => (
   </svg>
 );
 
-const CircleIcon = () => (
+const CircleIcon = ({ color }: Pick<Props, "color">) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
-    className={svg}
+    className={color ? svg.red : svg.default}
   >
     <path
       strokeLinecap="round"
@@ -39,20 +41,27 @@ const CircleIcon = () => (
   </svg>
 );
 
-const iconsDict: Record<string, JSX.Element> = {
-  o: <CircleIcon />,
-  x: <XMarkIcon />,
+const iconsDict = {
+  o: CircleIcon,
+  x: XMarkIcon,
 };
 
-const Tile = ({ clickedBy, onClick }: Props) => {
-  const getIcon = () => (clickedBy ? iconsDict[clickedBy] ?? null : null);
+const Icon = ({ clickedBy, color }: Partial<Props>) => {
+  if (!clickedBy) {
+    return null;
+  }
+  return createElement(iconsDict[clickedBy as keyof typeof iconsDict], {
+    color,
+  });
+};
 
+const Tile = ({ clickedBy, color, onClick }: Props) => {
   return (
     <button
       className={clickedBy ? tile.active : tile.default}
       onClick={onClick}
     >
-      {getIcon()}
+      <Icon clickedBy={clickedBy} color={color} />
     </button>
   );
 };

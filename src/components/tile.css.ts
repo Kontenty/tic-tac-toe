@@ -24,6 +24,10 @@ export const tile = styleVariants({
   ],
 });
 
-export const svg = style({
+export const svgBase = style({
   width: "80%",
 });
+export const svg = styleVariants({
+  default: [svgBase],
+  red: [svgBase, { stroke: "red" }],
+})
