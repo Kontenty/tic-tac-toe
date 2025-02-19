@@ -1,7 +1,7 @@
 import { tile, svg } from "./tile.css";
 
 interface Props {
-  clickedBy: null | number;
+  clickedBy: null | string;
   onClick: () => void;
 }
 
@@ -39,13 +39,13 @@ const CircleIcon = () => (
   </svg>
 );
 
+const iconsDict: Record<string, JSX.Element> = {
+  o: <CircleIcon />,
+  x: <XMarkIcon />,
+};
+
 const Tile = ({ clickedBy, onClick }: Props) => {
-  const getIcon = () => {
-    if (!clickedBy) {
-      return null;
-    }
-    return clickedBy === 1 ? <CircleIcon /> : <XMarkIcon />;
-  };
+  const getIcon = () => (clickedBy ? iconsDict[clickedBy] ?? null : null);
 
   return (
     <button
